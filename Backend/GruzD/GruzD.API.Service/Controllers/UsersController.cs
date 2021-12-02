@@ -18,7 +18,7 @@ namespace GruzD.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = KnownRoles.Admin)]
+    //[Authorize(Roles = KnownRoles.Admin)]
     public class UsersController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager;

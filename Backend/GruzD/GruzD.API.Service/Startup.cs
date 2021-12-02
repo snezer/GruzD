@@ -131,6 +131,12 @@ namespace GruzD.Web.Backend
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<ApplicationUser> userManager, ClaimsLoader claimsLoader)
         {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                context.Database.EnsureCreated();
+            }
+
             this.SeedAthentication(userManager, claimsLoader);
             app.UseForwardedHeaders();
             bool.TryParse(this.Configuration["AppSettings:AllowDevMiddleware"], out var startDevMiddle);

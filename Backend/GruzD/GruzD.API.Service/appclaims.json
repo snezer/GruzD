@@ -1,0 +1,14 @@
+{
+  "Admin": [
+    "Object.Create",
+    "Object.Edit",
+    "Object.View",
+    "Object.ViewAll",
+    "Task.Create",
+    "Task.Edit",
+    "Task.View",
+    "Task.ViewAll"
+  ],
+  "OTK": ["Object.View", "Object.ViewAll"],
+  "Office":["Some.Create"]
+}

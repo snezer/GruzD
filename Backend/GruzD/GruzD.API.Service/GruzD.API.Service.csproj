@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>IO.Web.Backend</AssemblyName>
-    <RootNamespace>IO.Web</RootNamespace>
+    <AssemblyName>GruzD.API.Service</AssemblyName>
+    <RootNamespace>GruzD.Web</RootNamespace>
     <PackageId>IO.Web.Backend</PackageId>
     <Authors>VTB</Authors>
     <Product>IO</Product>
