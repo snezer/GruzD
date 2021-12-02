@@ -13,6 +13,10 @@ namespace GruzD.DAL.PgSql
         {
         }
 
+        public LogicDataContext(DbContextOptions<LogicDataContext> options) : base(options)
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             new Mapping.ProcessEventMapping().Configure(modelBuilder.Entity<ProcessEvent>());
