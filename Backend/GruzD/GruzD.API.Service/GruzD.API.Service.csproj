@@ -45,6 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GruzD.DAL.PgSql\GruzD.DAL.PgSql.csproj" />
     <ProjectReference Include="..\GruzD.DataModel\GruzD.DataModel.csproj" />
   </ItemGroup>
 
