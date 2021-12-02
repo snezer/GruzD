@@ -156,7 +156,6 @@ namespace GruzD.Web.Backend
                .AllowAnyOrigin()
                .AllowAnyMethod()
                .AllowAnyHeader()
-               .AllowCredentials()
                .SetIsOriginAllowed(origin=>true));
 
             app.UseAuthentication();

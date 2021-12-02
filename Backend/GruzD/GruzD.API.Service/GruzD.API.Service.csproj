@@ -4,11 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>GruzD.API.Service</AssemblyName>
     <RootNamespace>GruzD.Web</RootNamespace>
-    <PackageId>IO.Web.Backend</PackageId>
-    <Authors>VTB</Authors>
-    <Product>IO</Product>
+    <PackageId>GruzD.API.Service</PackageId>
+    <Authors>Pro100.Studio</Authors>
+    <Product>GruzD</Product>
     <UserSecretsId>e0c97303-1303-4278-8fec-68a555107b3a</UserSecretsId>
   </PropertyGroup>
+
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>1701;1702;1591</NoWarn>
+    </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
@@ -29,6 +34,14 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.18" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+
+    <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="5.0.1" />
+
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.3.0" />
+    <PackageReference Include="Serilog.Sinks.EventLog" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
