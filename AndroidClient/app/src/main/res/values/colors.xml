@@ -7,7 +7,7 @@
     <color name="analog_800">#3d4154</color>
     <color name="foto_300">#e6e6e6</color>
     <color name="btn_box_400">#34d361</color>
-    <color name="btn_text_500">#00ca416</color>
+    <color name="btn_text_500">#00ca41</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="lite_300">#dbdff6</color>
@@ -15,4 +15,6 @@
     <color name="lite_900">#1c2131</color>
     <color name="sec_lite_300">#eaf1d6</color>
     <color name="sec_lite_900">#2b311c</color>
+    <color name="btn_text">#F15B5B</color>
+    <color name="text_color">#9691A2</color>
 </resources>
