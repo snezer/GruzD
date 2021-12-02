@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="@string/hint_login"
-        android:hintTextColor="?colorOnPrimary"
+        android:textColor="@color/text_color"
+        android:background="?colorPrimaryVariant"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,8 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:minHeight="48dp"
+        android:background="?colorPrimaryVariant"
+        android:textColor="@color/text_color"
         android:hint="@string/hint_pass"
-        android:textColorHint="?colorOnPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
@@ -36,6 +38,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:background="?colorPrimaryVariant"
+        android:text="@string/btn_login"
+        android:textColor="@color/btn_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
 
