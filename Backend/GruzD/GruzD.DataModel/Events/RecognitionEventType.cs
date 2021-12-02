@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GruzD.DataModel.Recognition
+namespace GruzD.DataModel.Events
 {
     public enum ProcessEventType
     {
-        IncomingNumber,
-        OutgoingNumber,
+        IncomingArrived,
+        OutgoingArrived,
+        IncomingDispatched,
+        OutgoingDispatched,
         IncomingDefect,
         OutgoingDefect,
         TransitiveDefect,

@@ -1,6 +1,7 @@
 using System.Text;
 
 using AutoMapper;
+using GruzD.DAL.PgSql;
 using GruzD.Web.Contracts;
 using GruzD.Web.Data;
 using GruzD.Web.Hubs;
@@ -39,6 +40,11 @@ namespace GruzD.Web.Backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseNpgsql(Configuration.GetConnectionString("mainDb"));
+            });
+
+            services.AddDbContext<LogicDataContext>(options =>
             {
                 options.UseNpgsql(Configuration.GetConnectionString("mainDb"));
             });
@@ -135,6 +141,9 @@ namespace GruzD.Web.Backend
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                context.Database.EnsureCreated();
+
+                var logicContext = serviceScope.ServiceProvider.GetRequiredService<LogicDataContext>();
                 context.Database.EnsureCreated();
             }
 

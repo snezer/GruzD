@@ -8,5 +8,6 @@ namespace GruzD.DataModel.BL
     {
         public long Id { get; set; }
         public string Name { get; set; }
+        public decimal Density { get; set; }
     }
 }
