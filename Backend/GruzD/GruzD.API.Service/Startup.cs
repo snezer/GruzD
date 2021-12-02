@@ -38,7 +38,11 @@ namespace GruzD.Web.Backend
 
         public void ConfigureServices(IServiceCollection services)
         {
-           
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseNpgsql(Configuration.GetConnectionString("mainDb"));
+            });
+
 
             services
                 .AddDefaultIdentity<ApplicationUser>(options =>
@@ -47,7 +51,6 @@ namespace GruzD.Web.Backend
 
                     options.ClaimsIdentity.UserIdClaimType = JwtClaimTypes.Subject;
                     options.ClaimsIdentity.UserNameClaimType = JwtClaimTypes.Name;
-                    //options.ClaimsIdentity.RoleClaimType = JwtClaimTypes.Role;
                 })
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
