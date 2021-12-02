@@ -104,6 +104,7 @@ namespace GruzD.Web.Backend
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Template servise", Version = "v1" });
             });
 
+            services.AddCors();
             services.AddControllersWithViews(options =>
             {
             })
@@ -154,7 +155,9 @@ namespace GruzD.Web.Backend
             app.UseCors(x => x
                .AllowAnyOrigin()
                .AllowAnyMethod()
-               .AllowAnyHeader());
+               .AllowAnyHeader()
+               .AllowCredentials()
+               .SetIsOriginAllowed(origin=>true));
 
             app.UseAuthentication();
             app.UseAuthorization();
