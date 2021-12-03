@@ -4,7 +4,7 @@ import { IDelivery } from "@/models/IDelivery";
 
 class DeliveryService extends RestService<IDelivery> {
   constructor() {
-    super('Delivery');
+    super('Supplies');
   }
   async getDeliverys(){
     return await deliveryService.getAll()
