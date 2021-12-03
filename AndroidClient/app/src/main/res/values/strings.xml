@@ -3,4 +3,5 @@
     <string name="btn_login">Войти</string>
     <string name="hint_pass">Пароль</string>
     <string name="hint_login">Логин</string>
+    <string name="btn_testing">Прверить</string>
 </resources>
