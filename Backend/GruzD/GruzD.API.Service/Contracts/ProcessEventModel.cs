@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using GruzD.DataModel.Events;
@@ -23,6 +24,7 @@ namespace GruzD.Web.Contracts
         /// <summary>
         /// Дата возбуждения событьия
         /// </summary>
+        [Required]
         public DateTime Occured { get; set; }
         /// <summary>
         /// Дополнительные сериализованные данные
@@ -31,10 +33,16 @@ namespace GruzD.Web.Contracts
         /// <summary>
         /// Тип события
         /// </summary>
+        [Required]
         public virtual ProcessEventType ClassifiedType { get; set; }
         /// <summary>
         /// Вес, если относится к событию
         /// </summary>
         public decimal? Weight { get; set; }
+        /// <summary>
+        /// Идентификатор зоны разгрузки
+        /// </summary>
+        [Required]
+        public long UnloadingZoneId { get; set; }
     }
 }

@@ -26,6 +26,8 @@ namespace GruzD.DAL.PgSql.Mapping
 
             builder.Property(t => t.ProcessTime);
             builder.Property(t => t.Processed);
+
+            builder.HasOne(t => t.UnloadingZone).WithMany().HasForeignKey(t => t.UnloadingZoneId);
         }
     }
 }
