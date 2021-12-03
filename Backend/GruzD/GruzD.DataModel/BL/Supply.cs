@@ -9,7 +9,9 @@ namespace GruzD.DataModel.BL
         public long Id { get; set; }
         public DateTime PlannedDate { get; set; }
         public DateTime FactDate { get; set; }
-        public virtual Provider Provider { get; set; }
-        public virtual  RawMaterialType RawMaterialType { get; set; }
+        public  Provider Provider { get; set; }
+        public long ProviderId { get; set; }
+        public  RawMaterialType RawMaterialType { get; set; }
+        public long RawMaterialId { get; set; }
     }
 }

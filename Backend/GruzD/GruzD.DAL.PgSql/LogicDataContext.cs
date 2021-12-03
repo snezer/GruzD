@@ -22,6 +22,9 @@ namespace GruzD.DAL.PgSql
             new Mapping.ProcessEventMapping().Configure(modelBuilder.Entity<ProcessEvent>());
             new Mapping.RecognitionSourceMapping().Configure(modelBuilder.Entity<RecognitionSource>());
             new Mapping.UnloadingZonesMapping().Configure(modelBuilder.Entity<UnloadingZone>());
+            new Mapping.ProviderMapping().Configure(modelBuilder.Entity<Provider>());
+            new Mapping.SupplyMapping().Configure(modelBuilder.Entity<Supply>());
+            new Mapping.RawMaterialMapping().Configure(modelBuilder.Entity<RawMaterialType>());
             base.OnModelCreating(modelBuilder);
         }
 
@@ -29,5 +32,7 @@ namespace GruzD.DAL.PgSql
         public DbSet<ProcessEvent> ProcessEvents { get; set; }
         public DbSet<RecognitionSource> RecognitionSources { get; set; }
         public DbSet<UnloadingZone> UnloadingZones { get; set; }
+        public DbSet<Provider> Providers { get; set; }
+        public DbSet<Supply> Supplies { get; set; }
     }
 }

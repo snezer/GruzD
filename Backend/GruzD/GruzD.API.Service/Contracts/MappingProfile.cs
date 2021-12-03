@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using GruzD.DataModel;
 using GruzD.DataModel.BL;
 using GruzD.DataModel.Events;
+using GruzD.Web.Contracts.Provider;
 using GruzD.Web.Contracts.User;
 using GruzD.Web.Contracts.Zone;
 using GruzD.Web.Models;
@@ -35,6 +36,12 @@ namespace GruzD.Web.Contracts
                 .ForMember(t => t.Registered, e => e.MapFrom(c => DateTime.Now));
 
             CreateMap<ProcessEvent, ProcessEventModel>();
+
+            CreateMap<DataModel.BL.Provider, ProviderModel>()
+                .ForSourceMember(s => s.Supplies, o => o.DoNotValidate());
+
+            CreateMap<ProviderModel, DataModel.BL.Provider>()
+                .ForMember(d => d.Supplies, o => o.Ignore());
         }
     }
 }
