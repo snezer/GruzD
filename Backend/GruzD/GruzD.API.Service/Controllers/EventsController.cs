@@ -12,8 +12,10 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace GruzD.Web.Controllers
 {
-    [Route("api/[controller]")]
+    
     [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class EventsController : ControllerBase
     {
         private LogicDataContext _context;
@@ -37,10 +39,13 @@ namespace GruzD.Web.Controllers
             BLOBData[] blobs = GetBlobs(model.Base64Pics);
             var dEvent = _mapper.Map<ProcessEvent>(model);
             await _context.ProcessEvents.AddAsync(dEvent);
-            foreach (var blobData in blobs)
+            if (blobs != null)
             {
-                blobData.ProcessEvent = dEvent;
-                _context.Blobs.Add(blobData);
+                foreach (var blobData in blobs)
+                {
+                    blobData.ProcessEvent = dEvent;
+                    _context.Blobs.Add(blobData);
+                }
             }
 
             await _context.SaveChangesAsync();
@@ -49,7 +54,7 @@ namespace GruzD.Web.Controllers
 
         private BLOBData[] GetBlobs(string[] modelBase64Pics)
         {
-            var res = modelBase64Pics.Select(s =>
+            var res = modelBase64Pics?.Select(s =>
             {
                 var bytes = Convert.FromBase64String(s);
                 BLOBData d = new BLOBData()

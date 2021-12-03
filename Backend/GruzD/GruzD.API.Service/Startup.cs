@@ -2,6 +2,7 @@ using System.Text;
 
 using AutoMapper;
 using GruzD.DAL.PgSql;
+using GruzD.Service.Extensions;
 using GruzD.Web.Contracts;
 using GruzD.Web.Data;
 using GruzD.Web.Hubs;
@@ -19,12 +20,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Prometheus;
+using Prometheus.SystemMetrics;
 
 namespace GruzD.Web.Backend
 {
@@ -107,10 +111,10 @@ namespace GruzD.Web.Backend
                     };
                 });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "GruzD service", Version = "v1" });
-            });
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "GruzD service", Version = "v1" });
+            //});
 
             
             services.AddControllersWithViews(options =>
@@ -125,12 +129,16 @@ namespace GruzD.Web.Backend
                 config.ModelBinderProviders.Insert(0, new InvariantDecimalModelBinderProvider());
             });
 
+            // System metrics & health checks
+            services.AddSystemMetrics();
+
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             });
 
             StartUpService(services);
+            services.AddApiDoc();
         }
 
         public static void StartUpService(IServiceCollection services)
@@ -138,7 +146,7 @@ namespace GruzD.Web.Backend
             services.AddSignalR();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<ApplicationUser> userManager, ClaimsLoader claimsLoader)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<ApplicationUser> userManager, ClaimsLoader claimsLoader, IApiVersionDescriptionProvider provider)
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
@@ -157,17 +165,19 @@ namespace GruzD.Web.Backend
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GruzD v1"));
+            //app.UseSwagger();
+            //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GruzD v1"));
 
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseHttpMetrics();
+
             app.UseCors(x => x
-               .AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader()
-               .SetIsOriginAllowed(origin=>true));
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true));
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -176,9 +186,11 @@ namespace GruzD.Web.Backend
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapFallbackToFile("index.html");
                 endpoints.MapHub<DefaultHub>("/defaulthub");
+                endpoints.MapMetrics();
             });
+
+            app.UseApiDoc(provider);
         }
 
         private void SeedAthentication(UserManager<ApplicationUser> userManager, ClaimsLoader claimsLoader)

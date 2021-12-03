@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GruzD.Web.Controllers
 {
+    
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [Produces("application/json")]
     public class ApiControllerBase : ControllerBase
     {

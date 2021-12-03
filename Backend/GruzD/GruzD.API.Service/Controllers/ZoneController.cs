@@ -11,8 +11,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GruzD.Web.Controllers
 {
-    [Route("api/[controller]")]
+   
     [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ZoneController : ControllerBase
     {
         private LogicDataContext _context;

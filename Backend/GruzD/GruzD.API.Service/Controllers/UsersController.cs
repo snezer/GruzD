@@ -16,8 +16,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GruzD.Web.Controllers
 {
-    [Route("api/[controller]")]
+    
     [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     //[Authorize(Roles = KnownRoles.Admin)]
     public class UsersController : ControllerBase
     {
