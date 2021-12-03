@@ -6,6 +6,7 @@ import dictionary from './dictionary.module';
 import acceptance from './acceptance.module';
 import zone from "@/store/zone.modules";
 import delivery from "@/store/delivery.module";
+import providers from "@/store/providers.module";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     dictionary,
     acceptance,
     zone,
-    delivery
+    delivery,
+    providers
   },
 });

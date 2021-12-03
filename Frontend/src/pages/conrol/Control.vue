@@ -108,9 +108,9 @@ export default class Control extends Vue{
   }
   @Watch('selectedZone')
   async handleGetZoneState(){
-    // clearInterval(this.idIntervalGetZoneState)
-    // this.idIntervalGetZoneState = setInterval(await this.getZoneState, 1000)
-    await this.getZoneState()
+    clearInterval(this.idIntervalGetZoneState)
+    this.idIntervalGetZoneState = setInterval(await this.getZoneState, 1000)
+    //await this.getZoneState()
   }
 
   async created(){

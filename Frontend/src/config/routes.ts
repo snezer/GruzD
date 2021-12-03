@@ -10,10 +10,10 @@ import { PROJECT_NAME } from '@/config';
 import Settings from '@/pages/settings/Settings.vue';
 import Statistic from "@/pages/statistic/Statistic.vue";
 import Documents from '@/pages/documents/Documents.vue';
-import Suppliers from '@/pages/suppliers/Suppliers.vue';
 import Acceptances from '@/pages/acceptance/Acceptances.vue';
 import ControlWrapper from '@/pages/conrol/ControlWrapper.vue'
 import Delivery from "@/pages/delivery/Delivery.vue";
+import Providers from "@/pages/providers/Providers.vue";
 
 Vue.use(VueRouter);
 
@@ -29,9 +29,9 @@ const routes: RouteConfig[] = [
     component: Documents
   },
   {
-    path: '/suppliers',
-    name: 'suppliers',
-    component: Suppliers
+    path: '/providers',
+    name: 'providers',
+    component: Providers
   },
   {
     path: '/delivery',

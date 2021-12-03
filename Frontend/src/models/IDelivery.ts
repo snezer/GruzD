@@ -1,9 +1,10 @@
-import { ISupplier } from "@/models/ISupplier";
-import { IProduct } from "@/models/IProduct";
 
 export interface IDelivery{
   id: number,
-  date: Date,
-  supplier: ISupplier,
-  product: IProduct
+  plannedDate: Date,
+  factDate: Date,
+  providerId: number,
+  providerName: string,
+  rawMaterialId: number,
+  rawMaterialName: string
 }
