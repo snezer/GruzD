@@ -69,8 +69,9 @@ export default class Control extends Vue{
     await this.$store.dispatch('zone/get_zone_state', this.selectedZone?.Id)
   }
 
-  created(){
-    this.$store.dispatch('zone/get_zones')
+  async created(){
+    await this.$store.dispatch('zone/get_zones')
+    this.selectedZone = this.zones[0]
   }
 
 };

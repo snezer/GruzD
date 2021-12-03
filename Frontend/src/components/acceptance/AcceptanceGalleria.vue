@@ -50,10 +50,20 @@ export default class AcceptanceGalleria extends Vue{
 }
 .p-tabview .p-tabview-nav{
   background: unset;
+  border: none;
 }
 .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
   background: #B94A50;
   color: white;
   border-color: unset;
 }
+.p-tabview .p-tabview-nav li .p-tabview-nav-link{
+  background: #5C2D3D;
+  color: white;
+  border-color: unset;
+}
+.p-tabview .p-tabview-panels{
+  padding: 0;
+}
+
 </style>
