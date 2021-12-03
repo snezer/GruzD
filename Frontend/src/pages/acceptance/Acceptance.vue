@@ -34,6 +34,14 @@
       </div>
     </div>
     <AcceptanceGalleria :photos-product="photosProduct" />
+    <div class="p-grid" style="margin-top: 10px">
+      <div class="p-col-6 p-text-center">
+        <Button class="p-button-outlined p-button-danger p-button-lg" label="Проверить"></Button>
+      </div>
+      <div class="p-col-6 p-text-center">
+        <Button class="p-button-outlined p-button-success p-button-lg" label="Принять"></Button>
+      </div>
+    </div>
   </div>
 </template>
 
