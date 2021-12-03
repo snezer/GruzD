@@ -82,7 +82,6 @@ class ShipmentCard : AppCompatActivity() {
         imgButton = findViewById(R.id.btnImageView)
         photoView = findViewById(R.id.foto_view)
         tiZoneEdit = findViewById(R.id.tvZone)
-        tiWagon = findViewById(R.id.tvWagon)
         tiUuid = findViewById(R.id.itUuid)
         tiScanResult = findViewById(R.id.scanResult)
         events = Events()

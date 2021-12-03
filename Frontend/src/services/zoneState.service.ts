@@ -8,32 +8,8 @@ class ZoneStateService extends RestService<IZoneState> {
   }
 
   async  getZoneState(zoneId: number){
-    const filter: PropertyFilter ={
-      name: 'zoneId',
-      value: String(zoneId)
-    };
-    const query: PagedFilter = {
-      filters: [filter],
-      page: 0,
-      itemsPerPage: 1
-    }
     return await zoneStateService.getById(`?zoneId=${zoneId}`)
-
   }
-  // async getUserByLogin(login: string) {
-  //   const filter: PropertyFilter = {
-  //     name: 'username',
-  //     value: login,
-  //   };
-  //
-  //   const query: PagedFilter = {
-  //     filters: [filter],
-  //     page: 0,
-  //     itemsPerPage: 1,
-  //   };
-  //
-  //   return await userService.getAll(query);
-  // }
 }
 
 export const zoneStateService = new ZoneStateService();

@@ -30,20 +30,12 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_color"
                 android:textSize="24dp"
+                android:hint="@string/name_zone_hint"
+                android:textColorHint="@color/text_color"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp"
                 tools:text="Зона Б" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tvWagon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:textColor="@color/text_color"
-                android:textSize="24dp"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="0dp"
-                tools:text="Вагон 6" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,6 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:hint="@string/num_wagon_hint"
+                android:textColorHint="@color/text_color"
                 android:textColor="@color/text_color"
                 android:textSize="24dp"
                 app:layout_constraintTop_toTopOf="parent"
@@ -79,6 +73,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:textColor="@color/text_color"
+                android:hint="@string/result_test"
+                android:textColorHint="@color/text_color"
                 android:textSize="24dp"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp"
@@ -92,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="47dp"
-        android:src="@drawable/foto_wagon_big"
+        android:background="@color/black_500"
         app:layout_constraintBottom_toTopOf="@+id/btnImageView"
         app:layout_constraintTop_toBottomOf="@+id/recContainer" />
 

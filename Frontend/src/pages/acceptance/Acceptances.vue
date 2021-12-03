@@ -7,18 +7,24 @@
       <div class="acceptance-events">
         <div class="p-grid">
           <div class="p-col-12">
-            <DataTable :value="acceptances" :selection.sync="selectedAcceptance" selectionMode="single" dataKey="id">
-              <Column field="code" header="Тип события"></Column>
-              <Column field="date" header="Время события">
+            <DataTable :value="listEvents" :selection.sync="selectedEvent" selectionMode="single" dataKey="Occured" :row-class="rowClass"
+                       :paginator="true" :rows="5"
+                       paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink">
+              <Column field="ClassifiedType" header="Тип события">
                 <template #body="slotProps">
-                  {{slotProps.data.date.toLocaleDateString('ru-Ru', {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"})}}
+                  {{eventTypeWord[slotProps.data.ClassifiedType]}}
                 </template>
               </Column>
-              <Column field="category" header="Описание"></Column>
+              <Column field="Occured" header="Время события">
+                <template #body="slotProps">
+                  {{calcDate(slotProps.data.Occured)}}
+                </template>
+              </Column>
+              <Column field="Weight" header="Вес"></Column>
             </DataTable>
           </div>
           <div class="p-col-12">
-            <Acceptance :acceptance="selectAcceptance"/>
+            <Acceptance :event="selectedEvent"/>
           </div>
         </div>
       </div>
@@ -30,23 +36,30 @@
 import {Component, Vue} from 'vue-property-decorator';
 import Acceptance from '@/pages/acceptance/Acceptance.vue';
 import Control from "@/pages/conrol/Control.vue";
+import { EventTypeWord } from "@/models/enum/EventType";
 @Component({
   components: { Control, Acceptance },
 })
 export default class Acceptances extends Vue {
   components: { Acceptance };
-  selectedAcceptance:Acceptance | null = null;
+  selectedEvent:Acceptance | null = null;
   expandedRowGroups = null;
+  eventTypeWord = EventTypeWord
 
-  get selectAcceptance() {
-    return JSON.parse(JSON.stringify(this.selectedAcceptance));
+  get selectEvent() {
+    return JSON.parse(JSON.stringify(this.selectedEvent));
   }
-  get acceptances() {
-    return this.$store.state.acceptance.acceptances;
+  get listEvents() {
+    return this.$store.state.zone.eventListActiveZoneState
   }
-
+  calcDate(date){
+    return new Date(date).toLocaleDateString('ru-Ru', {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"})
+  }
+  rowClass(data){
+    return !(data.ClassifiedType>=4 || data.ClassifiedType<=6) ? 'row-accessories':null
+  }
   created(){
-    this.selectedAcceptance = this.acceptances[0]
+    this.selectedEvent = this.listEvents[0]
   }
 }
 </script>
@@ -82,5 +95,14 @@ export default class Acceptances extends Vue {
 .caption{
   height:41px;
   background-color: rgba(255,255,255,.1)
+}
+.row-accessories {
+  background-color: rgba(238, 76, 76, 0.4) !important;
+
+}
+
+.p-paginator{
+  background-color: #372235;
+  border: none;
 }
 </style>
