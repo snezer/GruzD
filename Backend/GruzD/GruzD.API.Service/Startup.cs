@@ -141,10 +141,10 @@ namespace GruzD.Web.Backend
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                context.Database.EnsureCreated();
+                context.Database.Migrate();
 
                 var logicContext = serviceScope.ServiceProvider.GetRequiredService<LogicDataContext>();
-                context.Database.EnsureCreated();
+                context.Database.Migrate();
             }
 
             this.SeedAthentication(userManager, claimsLoader);

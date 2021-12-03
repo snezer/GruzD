@@ -1,7 +1,9 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using GruzD.DataModel;
+using GruzD.DataModel.BL;
 using GruzD.Web.Contracts.User;
+using GruzD.Web.Contracts.Zone;
 using GruzD.Web.Models;
 
 namespace GruzD.Web.Contracts
@@ -17,6 +19,12 @@ namespace GruzD.Web.Contracts
                 .ForMember(e => e.Email, e => e.MapFrom(c => c.Email))
                 .ForMember(e => e.Name, e => e.MapFrom(c => c.FullName))
                 .ForMember(e => e.Account, e => e.MapFrom(c => c.UserName));
+
+            CreateMap<ZoneModel, UnloadingZone>()
+                .ForMember(e => e.Sources, c => c.Ignore());
+
+            CreateMap<UnloadingZone, ZoneModel>()
+                .ForSourceMember(e => e.Sources, o => o.DoNotValidate());
         }
     }
 }
