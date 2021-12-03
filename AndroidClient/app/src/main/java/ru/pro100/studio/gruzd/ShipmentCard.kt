@@ -1,11 +1,12 @@
 package ru.pro100.studio.gruzd
 
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.ParcelUuid
 import android.widget.ImageView
 import com.google.android.material.textfield.TextInputEditText
+import ru.pro100.studio.gruzd.Data.Events
+import ru.pro100.studio.gruzd.ViewModels.FileViewModel
+import java.io.File
 
 class ShipmentCard : AppCompatActivity() {
 
@@ -15,6 +16,10 @@ class ShipmentCard : AppCompatActivity() {
     lateinit var tiWagon: TextInputEditText
     lateinit var tiUuid: TextInputEditText
     lateinit var tiScanResult: TextInputEditText
+    private lateinit var photoFile: File
+    private lateinit var events: Events
+    private lateinit var fileDetailViewModel: FileViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,5 +35,10 @@ class ShipmentCard : AppCompatActivity() {
         tiWagon = findViewById(R.id.tvWagon)
         tiUuid = findViewById(R.id.itUuid)
         tiScanResult = findViewById(R.id.scanResult)
+        events = Events()
+        fileDetailViewModel = FileViewModel()
+        photoFile = fileDetailViewModel.getPhotoFile(events)
     }
+
+
 }
