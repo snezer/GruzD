@@ -16,6 +16,8 @@ namespace GruzD.DAL.PgSql.Mapping
             builder.Property(t => t.CurrentWeight);
             builder.Property(t => t.Name);
             builder.HasMany(t => t.Sources).WithOne(s => s.SupplyZone).HasForeignKey(s => s.UnloadingZoneId);
+            builder.HasOne(t => t.CompanyTransport).WithMany().HasForeignKey(t => t.CompanyTransportId);
+            builder.HasOne(t => t.SupplierTransport).WithMany().HasForeignKey(t => t.SupplierTransportId);
         }
     }
 }
