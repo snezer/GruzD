@@ -13,6 +13,7 @@ import Documents from '@/pages/documents/Documents.vue';
 import Suppliers from '@/pages/suppliers/Suppliers.vue';
 import Acceptances from '@/pages/acceptance/Acceptances.vue';
 import ControlWrapper from '@/pages/conrol/ControlWrapper.vue'
+import Delivery from "@/pages/delivery/Delivery.vue";
 
 Vue.use(VueRouter);
 
@@ -31,6 +32,11 @@ const routes: RouteConfig[] = [
     path: '/suppliers',
     name: 'suppliers',
     component: Suppliers
+  },
+  {
+    path: '/delivery',
+    name: 'delivery',
+    component: Delivery
   },
   {
     path: '/acceptance',

@@ -5,6 +5,7 @@ import account from './account.module';
 import dictionary from './dictionary.module';
 import acceptance from './acceptance.module';
 import zone from "@/store/zone.modules";
+import delivery from "@/store/delivery.module";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -12,6 +13,7 @@ export default new Vuex.Store({
     account,
     dictionary,
     acceptance,
-    zone
+    zone,
+    delivery
   },
 });
