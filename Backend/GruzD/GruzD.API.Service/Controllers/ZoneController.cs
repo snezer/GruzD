@@ -30,14 +30,19 @@ namespace GruzD.Web.Controllers
         [ProducesResponseType(typeof(ZoneStateModel), 200)]
         public IActionResult GetState(long zoneId)
         {
-            var zone = _context.UnloadingZones.Single(t => t.Id == zoneId);
+            var zone = _context.UnloadingZones.
+                Single(t => t.Id == zoneId);
+
+            var companyTr = _context.CompanyTransports.SingleOrDefault(e => e.Id == zone.CompanyTransportId);
+            var suppTr = _context.SupplierTransports.SingleOrDefault(e => e.Id == zone.SupplierTransportId);
+
             var model = new ZoneStateModel()
             {
-                CompanyTransportNumber = zone?.CompanyTransport?.Number,
-                SupplyTransportNumber = zone?.SupplierTransport?.Number,
+                CompanyTransportNumber = companyTr?.Number,
+                SupplyTransportNumber = suppTr?.Number,
 
-                SupplyTransportWeight = zone?.SupplierTransport?.RemainingWeight,
-                CompanyTransportWeight = zone?.CompanyTransport?.CurrentWeight,
+                SupplyTransportWeight = suppTr?.RemainingWeight,
+                CompanyTransportWeight = companyTr?.CurrentWeight,
                 ZoneWeight = zone.CurrentWeight,
                 TransitWeight = 5,
 
