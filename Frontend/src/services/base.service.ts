@@ -10,7 +10,7 @@ export class BaseService {
   }
 
   protected get apiEndpoint(): string {
-    return `/api/${this._endpoint}`;
+    return `/api/v1/${this._endpoint}`;
   }
 }
 
