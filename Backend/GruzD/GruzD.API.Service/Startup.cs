@@ -41,7 +41,7 @@ namespace GruzD.Web.Backend
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("mainDb"));
+                options.UseNpgsql(Configuration.GetConnectionString("authDb"));
             });
 
             services.AddDbContext<LogicDataContext>(options =>
@@ -61,6 +61,8 @@ namespace GruzD.Web.Backend
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddCors();
 
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>()
@@ -110,7 +112,7 @@ namespace GruzD.Web.Backend
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GruzD service", Version = "v1" });
             });
 
-            services.AddCors();
+            
             services.AddControllersWithViews(options =>
             {
             })
@@ -141,10 +143,10 @@ namespace GruzD.Web.Backend
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                context.Database.Migrate();
+                context.Database.EnsureCreated();
 
                 var logicContext = serviceScope.ServiceProvider.GetRequiredService<LogicDataContext>();
-                context.Database.Migrate();
+                logicContext.Database.EnsureCreated();
             }
 
             this.SeedAthentication(userManager, claimsLoader);

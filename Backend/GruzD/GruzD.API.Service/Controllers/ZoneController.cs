@@ -48,7 +48,7 @@ namespace GruzD.Web.Controllers
         [ProducesResponseType(typeof(ZoneModel[]), 200)]
         public IActionResult GetAllZones()
         {
-            var results = _context.RecognitionSources.Select(s => _mapper.Map<ZoneModel>(s)).ToArray();
+            var results = _context.UnloadingZones.Select(s => _mapper.Map<ZoneModel>(s)).ToArray();
             return Ok(results);
         }
 
