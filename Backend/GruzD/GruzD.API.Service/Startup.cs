@@ -62,6 +62,8 @@ namespace GruzD.Web.Backend
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddCors();
+
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>()
                 .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())
@@ -110,7 +112,7 @@ namespace GruzD.Web.Backend
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GruzD service", Version = "v1" });
             });
 
-            services.AddCors();
+            
             services.AddControllersWithViews(options =>
             {
             })
