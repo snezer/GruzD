@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="zone">
-          <div class="control">
+          <div class="control" v-show="visibleControl">
 <!--            кнопки управления площадки с вагоном поставщика-->
             <Button
               icon="pi pi-arrow-up"
@@ -37,7 +37,7 @@
               {{zoneState.ZoneWeight}} тонн
             </div>
           </div>
-          <div class="control">
+          <div class="control" v-show="visibleControl">
             <Button icon="pi pi-arrow-up" :disabled="!zoneState.CompanyTransportNumber"
                     @click="handleMoveWeight(event.getOutgoing, event.putTransitive)"
             />
@@ -57,7 +57,7 @@
           </div>
         </div>
       </div>
-      <div class="control-train-car">
+      <div class="control-train-car" v-show="visibleControl">
         <Button icon="pi pi-arrow-up" class="p-button" style="height: 650px" v-if="visibleControlTrainCar"
             @click="handleMoveWeight(event.getOutgoing, event.putIncoming)"
         />
@@ -75,6 +75,12 @@ import { IZoneState, IZoneMini } from "@/models/IZoneState";
 import {EventType} from "@/models/enum/EventType";
 
 @Component({
+  props:{
+    visibleControl: {
+      type: Boolean,
+      default: true,
+    }, // пропс отвечающий за то показывать или не показывать кнопки управления крановщика
+  }
 
 })
 export default class Control extends Vue{
@@ -116,7 +122,6 @@ export default class Control extends Vue{
   }
 
   destroy() {
-
     clearInterval(this.idIntervalGetZoneState)
   }
 
@@ -125,7 +130,6 @@ export default class Control extends Vue{
 
 <style scoped>
 .control-wrapper{
-  height: 100%;
   display: grid;
   grid-template-rows: 1fr 11fr;
   color: white;
@@ -166,7 +170,7 @@ export default class Control extends Vue{
 
 .zone {
   display: grid;
-  grid-template-rows: 1fr 10fr 1fr;
+  grid-template-rows: max-content max-content max-content;
   gap: 10px;
 }
 .place{

@@ -12,7 +12,7 @@ import Statistic from "@/pages/statistic/Statistic.vue";
 import Documents from '@/pages/documents/Documents.vue';
 import Suppliers from '@/pages/suppliers/Suppliers.vue';
 import Acceptances from '@/pages/acceptance/Acceptances.vue';
-import Control from '@/pages/conrol/Control.vue'
+import ControlWrapper from '@/pages/conrol/ControlWrapper.vue'
 
 Vue.use(VueRouter);
 
@@ -40,7 +40,7 @@ const routes: RouteConfig[] = [
   {
     path: '/control',
     name: 'control',
-    component: Control,
+    component: ControlWrapper,
   },
   // {
   //   path: '/:notFound(.*)',

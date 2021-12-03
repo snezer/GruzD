@@ -1,55 +1,26 @@
 <template>
   <div>
-    <div class="p-grid">
-      <div class="p-col-9">
+    <div class="acceptance-wrapper">
+      <div class="acceptance-control">
+        <Control :visible-control="false"/>
+      </div>
+      <div class="acceptance-events">
         <div class="p-grid">
-          <div class="p-col-12 caption">
-            В разгрузке
+          <div class="p-col-12">
+            <DataTable :value="acceptances" :selection.sync="selectedAcceptance" selectionMode="single" dataKey="id">
+              <Column field="code" header="Тип события"></Column>
+              <Column field="date" header="Время события">
+                <template #body="slotProps">
+                  {{slotProps.data.date.toLocaleDateString('ru-Ru', {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"})}}
+                </template>
+              </Column>
+              <Column field="category" header="Описание"></Column>
+            </DataTable>
+          </div>
+          <div class="p-col-12">
+            <Acceptance :acceptance="selectAcceptance"/>
           </div>
         </div>
-        <DataTable
-          :value="acceptances"
-          :selection.sync="selectedAcceptance"
-          selectionMode="single"
-          dataKey="id"
-          responsiveLayout="scroll"
-          rowGroupMode="subheader"
-          groupRowsBy="supplier.name"
-          :expandableRowGroups="true"
-          :expandedRowGroups.sync="expandedRowGroups"
-          sortMode="single"
-          sortField="supplier.name"
-          :sortOrder="1"
-          class="gruzd"
-        >
-          <Column field="supplier.name" header="Поставщик"></Column>
-          <Column field="date" header="Дата приемки">
-            <template #body="slotProps">
-              <span>{{slotProps.data.date.toLocaleDateString('ru-Ru', {year: 'numeric', month: '2-digit', day: "numeric", hour: "numeric", minute: "numeric"})}}</span>
-            </template>
-          </Column>
-          <Column field="product.name" header="Продукт"></Column>
-          <Column field="status" header="Статус"></Column>
-          <Column field="defective" header="Брак">
-            <template #body="slotProps">
-              <span v-if="slotProps.data.defective">{{slotProps.data.defective}} брака</span>
-              <span v-else>-</span>
-            </template>
-          </Column>
-          <Column field="dischargeZone" header="Зона разгрузки"></Column>
-          <Column field="numberTrainCar" header="Номер вагона"></Column>
-          <template #groupheader="slotProps">
-            <span>{{slotProps.data.supplier.name}}</span>
-          </template>
-        </DataTable>
-      </div>
-      <div class="p-col-3" style="background-color: #372235 ">
-        <Acceptance v-bind:acceptance="selectAcceptance"/>
-      </div>
-    </div>
-    <div class="p-grid" style="margin-top: 50px">
-      <div class="p-col-12 caption">
-        На проверке
       </div>
     </div>
   </div>
@@ -58,8 +29,9 @@
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
 import Acceptance from '@/pages/acceptance/Acceptance.vue';
+import Control from "@/pages/conrol/Control.vue";
 @Component({
-  components: { Acceptance },
+  components: { Control, Acceptance },
 })
 export default class Acceptances extends Vue {
   components: { Acceptance };
@@ -80,6 +52,10 @@ export default class Acceptances extends Vue {
 </script>
 
 <style>
+.acceptance-wrapper{
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+}
 .p-datatable .p-datatable-tbody > tr{
   background: unset;
   color: unset;
