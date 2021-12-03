@@ -21,6 +21,7 @@ namespace GruzD.DAL.PgSql
         {
             new Mapping.ProcessEventMapping().Configure(modelBuilder.Entity<ProcessEvent>());
             new Mapping.RecognitionSourceMapping().Configure(modelBuilder.Entity<RecognitionSource>());
+            new Mapping.UnloadingZonesMapping().Configure(modelBuilder.Entity<UnloadingZone>());
             base.OnModelCreating(modelBuilder);
         }
 

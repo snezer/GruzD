@@ -41,7 +41,7 @@ namespace GruzD.Web.Backend
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("mainDb"));
+                options.UseNpgsql(Configuration.GetConnectionString("authDb"));
             });
 
             services.AddDbContext<LogicDataContext>(options =>
@@ -141,10 +141,10 @@ namespace GruzD.Web.Backend
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                context.Database.Migrate();
+                context.Database.EnsureCreated();
 
                 var logicContext = serviceScope.ServiceProvider.GetRequiredService<LogicDataContext>();
-                context.Database.Migrate();
+                logicContext.Database.EnsureCreated();
             }
 
             this.SeedAthentication(userManager, claimsLoader);
