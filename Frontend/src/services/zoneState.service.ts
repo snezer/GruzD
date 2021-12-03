@@ -17,7 +17,7 @@ class ZoneStateService extends RestService<IZoneState> {
       page: 0,
       itemsPerPage: 1
     }
-    return await zoneStateService.getAll(query)
+    return await zoneStateService.getById(`?zoneId=${zoneId}`)
 
   }
   // async getUserByLogin(login: string) {

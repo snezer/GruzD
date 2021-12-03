@@ -17,7 +17,7 @@ export const menu = [
   {
     label: 'Поставщики',
     icon: 'pi pi-fw pi-users',
-    to: '/suppliers'
+    to: '/providers'
   },
   {
     label: 'Документы',
