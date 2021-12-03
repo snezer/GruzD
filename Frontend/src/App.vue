@@ -46,8 +46,8 @@ export default class App extends Vue {
 
   // computed
   get isLoggedIn(): boolean {
-    // return this.$store.state.account.status.loggedIn;
-    return true
+     return this.$store.state.account.status.loggedIn;
+    //return true
   }
 
   get isSidebarVisible(): boolean {
