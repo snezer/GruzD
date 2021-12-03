@@ -10,9 +10,9 @@ export const menu = [
     to: '/acceptance'
   },
   {
-    label: 'Документы',
-    icon: 'pi pi-fw pi-file',
-    to: '/documents'
+    label: 'Поставки',
+    icon: 'pi pi-fw pi-map',
+    to: '/delivery'
   },
   {
     label: 'Поставщики',
@@ -20,8 +20,13 @@ export const menu = [
     to: '/suppliers'
   },
   {
+    label: 'Документы',
+    icon: 'pi pi-fw pi-file',
+    to: '/documents'
+  },
+  {
     label: 'Управление',
-    icon: 'pi pi-fw pi-arrow-left',
+    icon: 'pi pi-fw pi-sitemap',
     to: '/control',
   }
 ];

@@ -1,24 +1,11 @@
 <template>
   <div>
-    <TabView>
-      <TabPanel header="Товар">
-        <Galleria :value="photosProduct" :responsiveOptions="responsiveOptions2" :numVisible="4" thumbnailsPosition="right" style="max-width: 500px"
-
-                  :showThumbnails="false" :showIndicators="true" :changeItemOnIndicatorHover="true" :showIndicatorsOnItem="true" indicatorsPosition="right">
+        <Galleria :value="photosProduct" :numVisible="4" style="max-width: 500px"
+                  :showItemNavigators="true" :showThumbnails="false">
           <template #item="slotProps">
             <img :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt" style="width: 100%; display: block;" />
           </template>
-          <template #indicator="{index}">
-            <div style="width:54px; height: 51px; color: #e9ecef; display: flex; justify-content: center; align-items:center; cursor: pointer">
-                {{index + 1}}
-            </div>
-          </template>
         </Galleria>
-      </TabPanel>
-      <TabPanel header="№ Вагона">
-
-      </TabPanel>
-    </TabView>
   </div>
 </template>
 

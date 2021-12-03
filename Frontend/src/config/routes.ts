@@ -12,7 +12,8 @@ import Statistic from "@/pages/statistic/Statistic.vue";
 import Documents from '@/pages/documents/Documents.vue';
 import Suppliers from '@/pages/suppliers/Suppliers.vue';
 import Acceptances from '@/pages/acceptance/Acceptances.vue';
-import Control from '@/pages/conrol/Control.vue'
+import ControlWrapper from '@/pages/conrol/ControlWrapper.vue'
+import Delivery from "@/pages/delivery/Delivery.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes: RouteConfig[] = [
     component: Suppliers
   },
   {
+    path: '/delivery',
+    name: 'delivery',
+    component: Delivery
+  },
+  {
     path: '/acceptance',
     name: 'acceptance',
     component: Acceptances
@@ -40,7 +46,7 @@ const routes: RouteConfig[] = [
   {
     path: '/control',
     name: 'control',
-    component: Control,
+    component: ControlWrapper,
   },
   // {
   //   path: '/:notFound(.*)',
