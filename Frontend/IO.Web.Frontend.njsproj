@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>IO.Web.Frontend</Name>
+    <RootNamespace>IO.Web.Frontend</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>48b950e5-7bad-4b6e-9fa1-71defd027013</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>node_modules\@vue\cli-service\bin\vue-cli-service.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <NodejsPort>1337</NodejsPort>
+    <EnableTypeScript>true</EnableTypeScript>
+    <StartWebBrowser>true</StartWebBrowser>
+    <ScriptArguments>serve</ScriptArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="public\" />
+    <Folder Include="src\" />
+    <Folder Include="src\assets\" />
+    <Folder Include="src\assets\layout\" />
+    <Folder Include="src\assets\layout\sass\" />
+    <Folder Include="src\components\" />
+    <Folder Include="src\components\layout\" />
+    <Folder Include="src\components\shared\" />
+    <Folder Include="src\config\" />
+    <Folder Include="src\helpers\" />
+    <Folder Include="src\models\" />
+    <Folder Include="src\models\enum\" />
+    <Folder Include="src\pages\" />
+    <Folder Include="src\pages\abs\" />
+    <Folder Include="src\pages\client\" />
+    <Folder Include="src\pages\client\previews\" />
+    <Folder Include="src\pages\client\tabs\" />
+    <Folder Include="src\pages\scenarios\" />
+    <Folder Include="src\pages\security\" />
+    <Folder Include="src\pages\security\role\" />
+    <Folder Include="src\pages\security\user\" />
+    <Folder Include="src\pages\settings\" />
+    <Folder Include="src\services\" />
+    <Folder Include="src\store\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".browserslistrc" />
+    <Content Include=".editorconfig" />
+    <Content Include=".eslintrc.js" />
+    <Content Include=".gitignore" />
+    <Content Include="babel.config.js" />
+    <Content Include="bin\Microsoft.NodejsTools.WebRole.dll" />
+    <Content Include=".env">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="package.json" />
+    <Content Include="public\favicon.ico" />
+    <Content Include="public\index.html" />
+    <Content Include="src\App.vue" />
+    <Content Include="src\assets\layout\layout.scss" />
+    <Content Include="src\assets\layout\sass\_config.scss" />
+    <Content Include="src\assets\layout\sass\_content.scss" />
+    <Content Include="src\assets\layout\sass\_footer.scss" />
+    <Content Include="src\assets\layout\sass\_layout.scss" />
+    <Content Include="src\assets\layout\sass\_main.scss" />
+    <Content Include="src\assets\layout\sass\_menu.scss" />
+    <Content Include="src\assets\layout\sass\_mixins.scss" />
+    <Content Include="src\assets\layout\sass\_sidebar.scss" />
+    <Content Include="src\assets\layout\sass\_splash.scss" />
+    <Content Include="src\assets\layout\sass\_topbar.scss" />
+    <Content Include="src\assets\layout\sass\_typography.scss" />
+    <Content Include="src\assets\layout\_variables.scss" />
+    <Content Include="src\assets\logo.png" />
+    <Content Include="src\components\layout\AppMenu.vue" />
+    <Content Include="src\components\layout\AppSubmenu.vue" />
+    <Content Include="src\components\layout\AppTopbar.vue" />
+    <Content Include="src\components\layout\NavIconIconic.vue" />
+    <Content Include="src\components\shared\Workspace.vue" />
+    <Content Include="src\pages\abs\Abs.vue" />
+    <Content Include="src\pages\abs\AbsList.vue" />
+    <Content Include="src\pages\client\ClientList.vue" />
+    <Content Include="src\pages\client\ClientListItem.vue" />
+    <Content Include="src\pages\client\previews\AccountPreview.vue" />
+    <Content Include="src\pages\client\previews\CardPreview.vue" />
+    <Content Include="src\pages\client\previews\ClientPreview.vue" />
+    <Content Include="src\pages\client\previews\DocumentPreview.vue" />
+    <Content Include="src\pages\client\tabs\AccountsTab.vue" />
+    <Content Include="src\pages\client\tabs\CardsTab.vue" />
+    <Content Include="src\pages\client\tabs\DocumentsTab.vue" />
+    <Content Include="src\pages\client\tabs\MainTab.vue" />
+    <Content Include="src\pages\scenarios\Scenario.vue" />
+    <Content Include="src\pages\scenarios\Scenarios.vue" />
+    <Content Include="src\pages\security\Login.vue" />
+    <Content Include="src\pages\security\role\Role.vue" />
+    <Content Include="src\pages\security\role\Roles.vue" />
+    <Content Include="src\pages\security\user\User.vue" />
+    <Content Include="src\pages\security\user\Users.vue" />
+    <Content Include="src\pages\settings\Settings.vue" />
+    <Content Include="tsconfig.json" />
+    <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\config\axios-setup.ts" />
+    <TypeScriptCompile Include="src\config\consts.ts" />
+    <TypeScriptCompile Include="src\config\filters-setup.ts" />
+    <TypeScriptCompile Include="src\config\index.ts" />
+    <TypeScriptCompile Include="src\config\locale.ts" />
+    <TypeScriptCompile Include="src\config\routes.ts" />
+    <TypeScriptCompile Include="src\config\sidemenu.ts" />
+    <TypeScriptCompile Include="src\helpers\enumProp.ts" />
+    <TypeScriptCompile Include="src\helpers\exceptionHandling.ts" />
+    <TypeScriptCompile Include="src\helpers\form.helper.ts" />
+    <TypeScriptCompile Include="src\helpers\ImageFileSupp.ts" />
+    <TypeScriptCompile Include="src\helpers\index.ts" />
+    <TypeScriptCompile Include="src\helpers\token.storage.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\models\AbsInfo.ts" />
+    <TypeScriptCompile Include="src\models\AccountCardBinding.ts" />
+    <TypeScriptCompile Include="src\models\AccountInfo.ts" />
+    <TypeScriptCompile Include="src\models\ApplicationUser.ts" />
+    <TypeScriptCompile Include="src\models\CardInfo.ts" />
+    <TypeScriptCompile Include="src\models\ClientInfo.ts" />
+    <TypeScriptCompile Include="src\models\Document.ts" />
+    <TypeScriptCompile Include="src\models\DropdownValue.ts" />
+    <TypeScriptCompile Include="src\models\EditableRow.ts" />
+    <TypeScriptCompile Include="src\models\EnumValue.ts" />
+    <TypeScriptCompile Include="src\models\enum\AccountPreviewType.ts" />
+    <TypeScriptCompile Include="src\models\enum\CardCategory.ts" />
+    <TypeScriptCompile Include="src\models\enum\CardPreviewType.ts" />
+    <TypeScriptCompile Include="src\models\enum\ClientPreviewType.ts" />
+    <TypeScriptCompile Include="src\models\enum\ClientTab.ts" />
+    <TypeScriptCompile Include="src\models\enum\ClientType.ts" />
+    <TypeScriptCompile Include="src\models\enum\DocumentType.ts" />
+    <TypeScriptCompile Include="src\models\enum\FilterType.ts" />
+    <TypeScriptCompile Include="src\models\enum\SettingsCode.ts" />
+    <TypeScriptCompile Include="src\models\index.ts" />
+    <TypeScriptCompile Include="src\models\KnownClaims.ts" />
+    <TypeScriptCompile Include="src\models\Scenarios.ts" />
+    <TypeScriptCompile Include="src\models\SelectableRow.ts" />
+    <TypeScriptCompile Include="src\models\Settings.ts" />
+    <TypeScriptCompile Include="src\services\absInfo.service.ts" />
+    <TypeScriptCompile Include="src\services\account.service.ts" />
+    <TypeScriptCompile Include="src\services\accountCardRelation.service.ts" />
+    <TypeScriptCompile Include="src\services\accountInfo.service.ts" />
+    <TypeScriptCompile Include="src\services\base.service.ts" />
+    <TypeScriptCompile Include="src\services\cardInfo.service.ts" />
+    <TypeScriptCompile Include="src\services\clientInfo.service.ts" />
+    <TypeScriptCompile Include="src\services\document.service.ts" />
+    <TypeScriptCompile Include="src\services\index.ts" />
+    <TypeScriptCompile Include="src\services\localStorage.service.ts" />
+    <TypeScriptCompile Include="src\services\pagedFilter.ts" />
+    <TypeScriptCompile Include="src\services\pagedItems.ts" />
+    <TypeScriptCompile Include="src\services\role.service.ts" />
+    <TypeScriptCompile Include="src\services\scenarios.service.ts" />
+    <TypeScriptCompile Include="src\services\settings.service.ts" />
+    <TypeScriptCompile Include="src\services\user.service.ts" />
+    <TypeScriptCompile Include="src\shims-tsx.d.ts" />
+    <TypeScriptCompile Include="src\shims-vue.d.ts" />
+    <TypeScriptCompile Include="src\store\account.module.ts" />
+    <TypeScriptCompile Include="src\store\accountInfo.module.ts" />
+    <TypeScriptCompile Include="src\store\card.module.ts" />
+    <TypeScriptCompile Include="src\store\client.module.ts" />
+    <TypeScriptCompile Include="src\store\dictionary.module.ts" />
+    <TypeScriptCompile Include="src\store\document.module.ts" />
+    <TypeScriptCompile Include="src\store\index.ts" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

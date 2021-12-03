@@ -1,0 +1,20 @@
+.layout-main {
+  transition: margin-left $transitionDuration;
+  padding: 70px 1rem 1rem 1rem;
+  height: 100vh;
+}
+
+.p-scrollpanel > .p-scrollpanel-wrapper {
+  border-right: 9px solid var(--layer-1);
+}
+
+.p-scrollpanel > .p-scrollpanel-bar-y {
+  background-color: #007ad9;
+  opacity: 1;
+  transition: background-color 0.2s;
+  width: 7px;
+
+  &:hover {
+    background-color: #007ad9;
+  }
+}
