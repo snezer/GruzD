@@ -18,6 +18,7 @@ namespace GruzD.DAL.PgSql.Mapping
             builder.Property(t => t.PlannedDate);
             builder.HasOne(t => t.Provider).WithMany(e => e.Supplies).HasForeignKey(t => t.ProviderId);
             builder.HasOne(t => t.RawMaterialType).WithMany().HasForeignKey(t => t.ProviderId);
+            builder.HasMany(t => t.Transports).WithOne(s => s.Supply).HasForeignKey(t => t.SupplyId);
         }
     }
 }

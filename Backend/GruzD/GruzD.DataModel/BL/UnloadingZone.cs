@@ -15,8 +15,8 @@ namespace GruzD.DataModel.BL
         public long? SupplierTransportId { get; set; }
         public long? CompanyTransportId { get; set; }
 
-        public SupplierTransport SupplierTransport { get; set; }
+        public virtual SupplierTransport SupplierTransport { get; set; }
 
-        public CompanyTransport CompanyTransport { get; set; }
+        public virtual CompanyTransport CompanyTransport { get; set; }
     }
 }
