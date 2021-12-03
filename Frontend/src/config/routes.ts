@@ -53,13 +53,13 @@ export const router = new VueRouter({
 });
 
 router.beforeEach((to, _, next) => {
-  // const publicPages = [];
-  // const authRequired = !publicPages.find((page) => page === to.path);
-  // const loggedIn = localStorage.getItem('user');
-  //
-  // if (authRequired && !loggedIn && to.path != '/login') {
-  //   return next('/login');
-  // }
+  const publicPages = [];
+  const authRequired = !publicPages.find((page) => page === to.path);
+  const loggedIn = localStorage.getItem('user');
+
+  if (authRequired && !loggedIn && to.path != '/login') {
+    return next('/login');
+  }
 
   next();
 });
