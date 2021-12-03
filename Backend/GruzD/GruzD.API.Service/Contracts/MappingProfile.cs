@@ -1,9 +1,11 @@
 using System;
+using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using GruzD.DataModel;
 using GruzD.DataModel.BL;
 using GruzD.DataModel.Events;
+using GruzD.Web.Contracts.Events;
 using GruzD.Web.Contracts.Provider;
 using GruzD.Web.Contracts.Supply;
 using GruzD.Web.Contracts.User;
@@ -37,6 +39,9 @@ namespace GruzD.Web.Contracts
                 .ForMember(t => t.Registered, e => e.MapFrom(c => DateTime.Now));
 
             CreateMap<ProcessEvent, ProcessEventModel>();
+
+            CreateMap<ProcessEvent, ProcessEventShort>()
+                .ForMember(e=>e.Base64PicsIds, o=>o.MapFrom(d=>d.Sources.Select(dd=>dd.Id).ToArray()));
 
             CreateMap<DataModel.BL.Provider, ProviderModel>()
                 .ForSourceMember(s => s.Supplies, o => o.DoNotValidate());

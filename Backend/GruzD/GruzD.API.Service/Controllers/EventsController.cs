@@ -7,6 +7,7 @@ using AutoMapper;
 using GruzD.DAL.PgSql;
 using GruzD.DataModel.Events;
 using GruzD.Web.Contracts;
+using GruzD.Web.Contracts.Events;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 
@@ -50,6 +51,18 @@ namespace GruzD.Web.Controllers
 
             await _context.SaveChangesAsync();
             return Ok();
+        }
+
+        [HttpGet("last")]
+        [ProducesResponseType(typeof(ProcessEventShort[]), 200)]
+        public async Task<IActionResult> LastEvents(long zoneId, int number)
+        {
+            var result = _context.ProcessEvents
+                .Where(e=>e.UnloadingZoneId==zoneId)
+                .OrderByDescending(e => e.Registered)
+                .Take(number)
+                .Select(e => _mapper.Map<ProcessEventShort>(e)).ToArray();
+            return Ok(result);
         }
 
         private BLOBData[] GetBlobs(string[] modelBase64Pics)
