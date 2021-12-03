@@ -11,8 +11,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GruzD.Web.Controllers
 {
-    [Route("api/[controller]")]
+   
     [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ZoneController : ControllerBase
     {
         private LogicDataContext _context;
@@ -28,18 +30,24 @@ namespace GruzD.Web.Controllers
         [ProducesResponseType(typeof(ZoneStateModel), 200)]
         public IActionResult GetState(long zoneId)
         {
+            var zone = _context.UnloadingZones.
+                Single(t => t.Id == zoneId);
+
+            var companyTr = _context.CompanyTransports.SingleOrDefault(e => e.Id == zone.CompanyTransportId);
+            var suppTr = _context.SupplierTransports.SingleOrDefault(e => e.Id == zone.SupplierTransportId);
+
             var model = new ZoneStateModel()
             {
-                CompanyTransportNumber = "45678912",
-                SupplyTransportNumber = "45678913",
+                CompanyTransportNumber = companyTr?.Number,
+                SupplyTransportNumber = suppTr?.Number,
 
-                SupplyTransportWeight = 70,
-                CompanyTransportWeight = 0,
-                ZoneWeight = 0,
-                TransitWeight = 7,
+                SupplyTransportWeight = suppTr?.RemainingWeight,
+                CompanyTransportWeight = companyTr?.CurrentWeight,
+                ZoneWeight = zone.CurrentWeight,
+                TransitWeight = 5,
 
-                ZoneId = 1,
-                ZoneName = "Зона погрузки А",
+                ZoneId = zone.Id,
+                ZoneName = zone.Name,
             };
             return Ok(model);
         }

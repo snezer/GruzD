@@ -1,6 +1,8 @@
 import { IZoneState, IZoneMini } from "@/models/IZoneState";
 import { zoneService } from "@/services/zone.service";
 import { zoneStateService } from "@/services/zoneState.service";
+import { EventType } from "@/models/enum/EventType";
+import { eventService } from "@/services/event.service";
 
 interface ZoneState {
   zones: Array<IZoneMini>,
@@ -31,7 +33,11 @@ const zone = {
       const zoneState = await zoneStateService.getZoneState(zoneId)
       console.log(zoneState)
       commit('SAVE_ZONE_STATE', zoneState)
+    },
+    async move_weight({commit}, {from, to, weight, zoneId}){
+      const moveWeight = await eventService.moveWeight(from, to, weight, zoneId)
     }
+
   },
   mutations: {
     SAVE_ZONES(state, zones:Array<IZoneMini>){

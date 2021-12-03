@@ -11,5 +11,12 @@ namespace GruzD.DataModel.BL
         public string Name { get; set; }
         public decimal CurrentWeight { get; set; }
         public List<RecognitionSource> Sources { get; set; }
+
+        public long? SupplierTransportId { get; set; }
+        public long? CompanyTransportId { get; set; }
+
+        public virtual SupplierTransport SupplierTransport { get; set; }
+
+        public virtual CompanyTransport CompanyTransport { get; set; }
     }
 }

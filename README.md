@@ -43,6 +43,7 @@
 
 СРЕДА ЗАПУСКА BACKEND
 ------------
+0) клонирование репозитория ```git clone https://github.com/snezer/GruzD```
 1) развертывание сервиса производилось на Windows-машине, однако может происходить и на linux-like средах, поддерживаемых .NET Core
 2) требуется установленный  Docker и docker-compose для автоматизации развёртывания проекта;
 3) Разворачиваем postgreSQL и mongoDB:
@@ -137,23 +138,22 @@ pause
 
 СРЕДА ЗАПУСКА FRONTEND
 ------------
-### Установка fronend
+### Установка frontend
 ...
 ~~~
-Для запуска проекта необходим глобально установленный yarn. Установить его можно с помощью команды npm install -g yarn
-git clone https://github.com/snezer/Kontactor.Pro100.studio склонировать себе проект 
-cd frontend  перейти в папку с фронтом
-yarn install установит все зависимости для проекта 
-yarn run serve запустит проект в режиме разработки получить доступ можно по адресу localhost:8080
-yarn run build запусти процесс сборки проекта для продакшена
+0) клонирование репозитория ```git clone https://github.com/snezer/GruzD```
+1) cd frontend  перейти в папку с фронтом
+3) npm install установит все зависимости для проекта 
+4) npm run serve запустит проект в режиме разработки получить доступ можно по адресу localhost:8080
+5) npm run build запустит процесс сборки проекта для продакшена
 ...
 ~~~
 
 
 РАЗРАБОТЧИКИ
 
-<h4>Мусихин Алексей Руководитель https://t.me/writer22rus</h4>
-<h4>Фокин Максим Full-stack https://t.me/snezer</h4>
-<h4>Грибков Александр Full-stack https://t.me/alex_gbk</h4>
-<h4>Костенко Виталий Front-end https://t.me/kreolz3245</h4>
-<h4>Намаканова Наиля Дизайн https://t.me/n_namakonova</h4>
+<h4>Мусихин Алексей Руководитель/Анализ https://t.me/writer22rus</h4>
+<h4>Фокин Максим Full-stack/Мобильная разработка https://t.me/snezer</h4>
+<h4>Грибков Александр Архитектура/Анализ/Full-stack разработка https://t.me/alex_gbk</h4>
+<h4>Костенко Виталий Front-end разработка https://t.me/kreolz3245</h4>
+<h4>Намакoнова Наиля Дизайн https://t.me/n_namakonova</h4>

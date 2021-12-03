@@ -1,45 +1,20 @@
 <template>
   <div>
+    <AcceptanceGalleria :photos-product="photosProduct" />
     <div class="p-grid">
       <div class="p-col-12">
-        <div class="p-grid">
-          <div class="p-col-6">
-            {{acceptance.supplier.name}}
-          </div>
-          <div class="p-col-6 p-text-right">
-            Зона {{acceptance.dischargeZone}}
-            Вагон {{acceptance.numberTrainCar}}
-          </div>
-        </div>
+        Результат
       </div>
       <div class="p-col-12">
-        <div class="p-grid">
-          <div class="p-col-6">
-          Разгружен на {{acceptance.status}}
-          </div>
-          <div class="p-col-6 p-text-right">
-
-          </div>
-        </div>
+        Дата {{new Date(acceptance.date).toLocaleDateString('ru', {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"})}}
       </div>
       <div class="p-col-12">
-        <div class="p-grid">
-          <div class="p-col-6" style="color: #F15B5B;">
-            Обнаруженно {{acceptance.defective}} брака
-          </div>
-          <div class="p-col-6 p-text-right">
-            {{acceptance.product.name}}
-          </div>
-        </div>
+        Обнаруженно {{acceptance.defective}} брака
       </div>
     </div>
-    <AcceptanceGalleria :photos-product="photosProduct" />
     <div class="p-grid" style="margin-top: 10px">
       <div class="p-col-6 p-text-center">
-        <Button class="p-button-outlined p-button-danger p-button-lg" label="Проверить"></Button>
-      </div>
-      <div class="p-col-6 p-text-center">
-        <Button class="p-button-outlined p-button-success p-button-lg" label="Принять"></Button>
+        <Button class="p-button-outlined p-button-danger p-button-lg" label="Ошибка"></Button>
       </div>
     </div>
   </div>
@@ -72,6 +47,9 @@ export default class Acceptance extends Vue {
 };
 </script>
 
-<style scoped>
-
+<style>
+.p-datatable .p-datatable-thead > tr > th {
+  background-color: #372235;
+  color: white;
+}
 </style>

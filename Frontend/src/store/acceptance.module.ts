@@ -1,7 +1,9 @@
 import { IAcceptance } from "@/models/IAcceptance";
+import { acceptanceService } from "@/services/acceptance.service";
 
 interface AcceptanceState {
   acceptances: Array<IAcceptance>
+  acceptanceInfo: any | null
 }
 const initialState: AcceptanceState = {
   acceptances: [
@@ -45,16 +47,29 @@ const initialState: AcceptanceState = {
         'https://www.business-vector.info/wp-content/uploads/2020/05/rzhd.jpg'
       ]
     },
-  ]
+  ],
+  acceptanceInfo: null
 }
 const acceptance = {
   namespaced: true,
   state: initialState,
   actions:{
-
+    async get_acceptances({commit}){
+      const acceptances = await acceptanceService.getAcceptance()
+      commit('SAVE_ACCEPTANCES', acceptances)
+    },
+    async get_acceptance_info({commit}, acceptanceId){
+      const acceptanceInfo = await acceptanceService.getAcceptInfo(acceptanceId)
+      commit('SAVE_ACCEPTANCE_INFO', acceptanceInfo)
+    }
   },
   mutations: {
-
+    SAVE_ACCEPTANCES(state, acceptances: Array<IAcceptance>){
+      state.acceptances = acceptances;
+    },
+    SAVE_ACCEPTANCE_INFO(state, acceptanceInfo){
+      state.acceptanceInfo = acceptanceInfo
+    }
   }
 };
 

@@ -14,5 +14,9 @@ namespace GruzD.DataModel.BL
         public decimal InitialWeight { get; set; }
 
         public decimal RemainingWeight { get; set; }
+
+        public long SupplyId { get; set; }
+
+        public Supply Supply { get; set; }
     }
 }
