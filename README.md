@@ -44,9 +44,13 @@
 ------------
 1) развертывание сервиса производилось на Windows-машине, однако может происходить и на linux-like средах, поддерживаемых .NET Core
 2) требуется установленный  Docker и docker-compose для автоматизации развёртывания проекта;
-3) Разворачиваем postgreSQL:
+3) Разворачиваем postgreSQL и mongoDB:
 ```
 version: "3.7"
+volumes:
+    postgres:
+    pgadmin:
+
 services:
   mongodb:
     container_name: mongo-dev
@@ -67,31 +71,68 @@ services:
       - ME_CONFIG_MONGODB_ADMINPASSWORD=pass
       - ME_CONFIG_MONGODB_SERVER=mongo-dev
       - ME_CONFIG_BASICAUTH_USERNAME=admin
-      - ME_CONFIG_BASICAUTH_PASSWORD=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=ihavealongpassword
     ports:
       - '8081:8081'
+      
+    postgres:
+        container_name: postgres
+        image: "postgres:latest"
+        environment:
+          POSTGRES_USER: "admin"
+          POSTGRES_PASSWORD: "pass"
+          PGDATA: "/data/postgres"
+        volumes:
+           - postgres:/data/postgres
+           - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+        ports:
+          - "15432:5432"
+        restart: unless-stopped
+      pgadmin:
+        container_name: pgadmin
+        image: "dpage/pgadmin4:4.24"
+        depends_on:
+            - postgres
+        environment:
+          PGADMIN_DEFAULT_EMAIL: admin
+          PGADMIN_DEFAULT_PASSWORD: ihavealongpassword
+          PGADMIN_CONFIG_SERVER_MODE: "False"
+          PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+        volumes:
+           - pgadmin:/var/lib/pgadmin
+           - ./docker_pgadmin_servers.json:/pgadmin4/servers.json
+        ports:
+          - "15433:80"
+        entrypoint:
+          - "/bin/sh"
+          - "-c"
+          - "/bin/echo 'postgres:5432:*:postgres:password' > /tmp/pgpassfile && chmod 600 /tmp/pgpassfile && /entrypoint.sh"
+        restart: unless-stopped    
 ```
 4) Простой ci процесс на bat:
 ```
-sc stop kontaktormn
+sc stop gruzdapi
 :loop
-sc query kontaktormn | find "STOPPED"
+sc query gruzdapi | find "STOPPED"
 if errorlevel 1 (
   timeout 1
   goto loop
 )
-taskkill /F /IM KONTAKTOR.Main.Service.exe
+taskkill /F /IM GruzD.API.Service.exe
 
-cd C:\Users\fofin\Documents\Work_2020\2021\hack\full-sources
+cd c:\HACK2021FINAL\ACCENTURE\
 git pull
-cd C:\Users\fofin\Documents\Work_2020\2021\hack\full-sources\backend\kontaktor-network\kontaktor-network.Service\
-dotnet publish -c Debug -o C:\Users\fofin\Documents\Work_2020\2021\hack\published\kontaktor-network
+cd c:\HACK2021FINAL\ACCENTURE\Backend\GruzD\GruzD.API.Service\ 
+dotnet publish -c Debug -o c:\HACK2021FINAL\gruzdapi
 
-sc start kontaktormn
+sc start gruzdapi
+
+echo Service updated
+pause
 ```
 5) Имеет смысл зарегистрировать сервис через sc
  
-```sc create kontaktormn "C:\Users\fofin\Documents\Work_2020\2021\hack\full-sources\backend\kontaktor-network\kontaktor-network.Service\KONTAKTOR.Main.Service.exe"```
+```sc create gruzdapi binPath="c:\HACK2021FINAL\gruzdapi\GruzD.API.Service.exe"```
 
 СРЕДА ЗАПУСКА FRONTEND
 ------------
