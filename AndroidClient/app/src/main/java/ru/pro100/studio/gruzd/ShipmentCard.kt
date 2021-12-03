@@ -1,8 +1,11 @@
 package ru.pro100.studio.gruzd
 
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
+import android.graphics.Bitmap
+import android.graphics.Point
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +14,7 @@ import android.widget.ImageView
 import androidx.core.content.FileProvider
 import com.google.android.material.textfield.TextInputEditText
 import ru.pro100.studio.gruzd.Data.Events
+import ru.pro100.studio.gruzd.Utils.PictureUtils
 import ru.pro100.studio.gruzd.ViewModels.FileViewModel
 import java.io.File
 
@@ -29,6 +33,7 @@ class ShipmentCard : AppCompatActivity() {
     private lateinit var events: Events
     private lateinit var fileDetailViewModel: FileViewModel
     private lateinit var photoUri: Uri
+    private lateinit var picUtil: PictureUtils
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,8 +63,19 @@ class ShipmentCard : AppCompatActivity() {
                         Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
                 }
                 startActivityForResult(captureImage, REQUEST_PHOTO)
+                updatePhotoView()
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int,
+                                  resultCode: Int,
+                                  data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode != Activity.RESULT_OK) {
+            return
+        }
+        updatePhotoView()
     }
 
     fun init(){
@@ -73,7 +89,15 @@ class ShipmentCard : AppCompatActivity() {
         fileDetailViewModel = FileViewModel()
         photoFile = fileDetailViewModel.getPhotoFile(events)
         photoUri = FileProvider.getUriForFile(this, "ru.pro100.studio.gruzd.fileprovider", photoFile)
+        picUtil = PictureUtils()
     }
 
-
+    private fun updatePhotoView() {
+        if (photoFile.exists()) {
+            val bitmap = picUtil.getScaledBitmap(photoFile.path, this)
+            photoView.setImageBitmap(bitmap)
+        } else {
+            photoView.setImageDrawable(null)
+        }
+    }
 }
