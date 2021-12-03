@@ -1,5 +1,6 @@
 package ru.pro100.studio.gruzd
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -7,6 +8,7 @@ import android.util.Log
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import androidx.appcompat.widget.LinearLayoutCompat
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ru.pro100.studio.gruzd.Data.QualityTestResult
 import java.util.*
 import kotlin.collections.HashMap
@@ -54,6 +56,12 @@ class TestResultActivity : AppCompatActivity() {
         podsList.adapter = podsAdapter
         podsList.setOnItemClickListener{ parent, view, position, id ->
             Log.d(TAG, pods[position]["Uuid"].toString())
+        }
+
+        var floatingButton = findViewById<FloatingActionButton>(R.id.new_card_button)
+        floatingButton.setOnClickListener{
+            val intent = Intent(this, ShipmentCard::class.java)
+            startActivity(intent)
         }
 
     }

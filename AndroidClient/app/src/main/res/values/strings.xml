@@ -4,4 +4,6 @@
     <string name="hint_pass">Пароль</string>
     <string name="hint_login">Логин</string>
     <string name="btn_testing">Прверить</string>
+    <string name="tv_hint_wagon_number">Номер вагона</string>
+    <string name="list_name">На проверке</string>
 </resources>
