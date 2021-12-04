@@ -9,4 +9,5 @@
     <string name="name_zone_hint">Номер зоны разгрузки</string>
     <string name="num_wagon_hint">Номер вагона</string>
     <string name="result_test">Результат анализа</string>
+    <string name="sucsess_sending">Данные успешно отправлены!</string>
 </resources>

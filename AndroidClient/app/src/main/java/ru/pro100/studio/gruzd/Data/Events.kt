@@ -1,16 +1,17 @@
 package ru.pro100.studio.gruzd.Data
 
+import com.google.gson.annotations.SerializedName
 import java.util.*
 
 
 data class Events(
-    var base64Pics: Array<String> = emptyArray(),
-    var number: String = "",
-    var occured: Date = Date(),
-    var auxData: String = "",
-    var classifiedType: Int = 0,
-    var weight: Int = 0,
-    var unloadingZoneId: Int = 0
+    @SerializedName("base64Pics") var base64Pics: Array<String> = emptyArray(),
+    @SerializedName("number")var number: String = "",
+    @SerializedName("occured")var occured: Date = Date(),
+    @SerializedName("auxData")var auxData: String = "",
+    @SerializedName("classifiedType")var classifiedType: Int = 0,
+    @SerializedName("weight")var weight: Int = 0,
+    @SerializedName("unloadingZoneId:")var unloadingZoneId: Int = 0
 ) {
     val photoFileName
         get() = "IMG_@Date.jpg"

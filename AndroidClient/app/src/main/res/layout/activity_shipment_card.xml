@@ -28,10 +28,10 @@
                 android:id="@+id/tvZone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_color"
-                android:textSize="24dp"
                 android:hint="@string/name_zone_hint"
+                android:textColor="@color/text_color"
                 android:textColorHint="@color/text_color"
+                android:textSize="24dp"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp"
                 tools:text="Зона Б" />
@@ -39,11 +39,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="47dp"
-            android:layout_marginRight="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="47dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -52,19 +52,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:hint="@string/num_wagon_hint"
-                android:textColorHint="@color/text_color"
                 android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
                 android:textSize="24dp"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp"
                 tools:text="77786574" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="47dp"
-            android:layout_marginRight="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="47dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -72,8 +73,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="@color/text_color"
                 android:hint="@string/result_test"
+                android:textColor="@color/text_color"
                 android:textColorHint="@color/text_color"
                 android:textSize="24dp"
                 app:layout_constraintTop_toTopOf="parent"
@@ -86,23 +87,35 @@
     <ImageView
         android:id="@+id/foto_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="47dp"
+        android:layout_height="395dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginRight="47dp"
+        android:layout_marginBottom="130dp"
         android:background="@color/black_500"
-        app:layout_constraintBottom_toTopOf="@+id/btnImageView"
-        app:layout_constraintTop_toBottomOf="@+id/recContainer" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/btnImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="47dp"
-        android:layout_marginTop="125dp"
-        android:layout_marginBottom="63dp"
+        android:layout_margin="7dp"
         android:src="@drawable/ic_button_add_foto"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foto_view" />
+
+    <ImageView
+        android:id="@+id/btnSendImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:src="@drawable/ic_button_send"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/btnImageView"
+        app:layout_constraintTop_toBottomOf="@+id/foto_view" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
