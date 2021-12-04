@@ -39,7 +39,7 @@ export default class Delivery extends Vue{
     return this.$store.state.delivery.deliverys
   }
 
-  created(){
+   created(){
     this.$store.dispatch('delivery/get_deliverys')
     this.$store.dispatch('providers/get_providers')
   }

@@ -46,7 +46,7 @@ export default class Acceptance extends Vue {
     return new Date(date).toLocaleDateString('ru-Ru', {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"})
   }
   get photos() {
-    // try{
+    try{
       return this?.event.Base64PicsIds.map( photo=>{
         return {
           itemImageSrc: `/api/v1/File/${photo}`,
@@ -55,16 +55,16 @@ export default class Acceptance extends Vue {
           title: "Title 1"
         }
       })
-    // }catch (e) {
-    //   return [
-    //     {
-    //       itemImageSrc: 'https://s0.rbk.ru/v6_top_pics/ampresize/media/img/9/44/755283020588449.jpg',
-    //       thumbnailImageSrc: 'https://s0.rbk.ru/v6_top_pics/ampresize/media/img/9/44/755283020588449.jpg',
-    //       alt: "Описание события",
-    //       title: 'Заголовок'
-    //     }
-    //   ]
-    // }
+    }catch (e) {
+      return [
+        {
+          itemImageSrc: 'https://s0.rbk.ru/v6_top_pics/ampresize/media/img/9/44/755283020588449.jpg',
+          thumbnailImageSrc: 'https://s0.rbk.ru/v6_top_pics/ampresize/media/img/9/44/755283020588449.jpg',
+          alt: "Описание события",
+          title: 'Заголовок'
+        }
+      ]
+    }
 
   }
 };
