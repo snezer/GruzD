@@ -10,6 +10,6 @@ import ru.pro100.studio.gruzd.Data.Events
 interface GruzdApi{
 
     @Headers("Content-Type: application/json")
-    @POST("/api/v1/Events")
+    @POST("/Events")
     fun pullEvent(@Body event: Events): Call<Events>
 }

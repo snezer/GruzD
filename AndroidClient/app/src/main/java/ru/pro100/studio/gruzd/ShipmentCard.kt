@@ -26,6 +26,7 @@ import java.io.File
 import android.view.View.MeasureSpec
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import ru.pro100.studio.gruzd.Utils.RecognitionUtils
 import java.io.ByteArrayOutputStream
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -50,6 +51,7 @@ class ShipmentCard : AppCompatActivity() {
     private lateinit var picUtil: PictureUtils
     private lateinit var retroFit: Retrofit
     private lateinit var gruzdApi: GruzdApi
+    private lateinit var recogUtils: RecognitionUtils
 
     fun updatePhotoView() {
         if (photoFile.exists()) {
@@ -89,6 +91,9 @@ class ShipmentCard : AppCompatActivity() {
                 }
                 startActivityForResult(captureImage, REQUEST_PHOTO)
                 updatePhotoView()
+                val bitmap: Bitmap = Bitmap.createBitmap(photoView.getDrawingCache())
+
+                recogUtils.StartRecognition(this@ShipmentCard, bitmap, photoView, tiUuid)
             }
         }
         imgSendButton.setOnClickListener{
@@ -144,6 +149,7 @@ class ShipmentCard : AppCompatActivity() {
     }
 
     fun init(){
+
         imgButton = findViewById(R.id.btnImageView)
         imgSendButton = findViewById(R.id.btnSendImageView)
         photoView = findViewById(R.id.foto_view)
@@ -157,5 +163,6 @@ class ShipmentCard : AppCompatActivity() {
         picUtil = PictureUtils()
         retroFit = Retrofit.Builder().baseUrl("http://192.168.1.50:5000").build()
         gruzdApi = retroFit.create(GruzdApi::class.java)
+        recogUtils = RecognitionUtils()
     }
 }
