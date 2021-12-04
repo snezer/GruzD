@@ -4,14 +4,14 @@
       <Column field="ProviderName" header="Наименование поставщика"></Column>
       <Column field="RawMaterialName" header="Материал поставки"></Column>
       <Column field="PlannedDate" header="Плановая дата поставки">
-<!--        <template #body="slotProps">-->
-<!--          {{new Date(slotProps.PlannedDate).toLocaleDateString('ru-RU', {year: "numeric", month: "2-digit", day: "2-digit"})}}-->
-<!--        </template>-->
+        <template #body="slotProps">
+          {{calcDate(slotProps.data.PlannedDate)}}
+        </template>
       </Column>
       <Column field="FactDate" header="Фактическая дата поставки">
-<!--        <template #body="slotProps">-->
-<!--          {{new Date(slotProps.FactDate).toLocaleDateString('ru-RU', {year: "numeric", month: "2-digit", day: "2-digit"})}}-->
-<!--        </template>-->
+        <template #body="slotProps">
+          {{calcDate(slotProps.data.FactDate)}}
+        </template>
       </Column>
     </DataTable>
   </div>
@@ -21,6 +21,9 @@
 import {Component, Vue} from "vue-property-decorator";
 @Component({})
 export default class Delivery extends Vue{
+  calcDate(date){
+    return new Date(date).toLocaleDateString('ru-Ru', {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"})
+  }
   get deliverys(){
     return this.$store.state.delivery.deliverys
   }

@@ -3,6 +3,7 @@ using System.Text;
 using AutoMapper;
 using GruzD.DAL.PgSql;
 using GruzD.Service.Extensions;
+using GruzD.Service.HostedServices;
 using GruzD.Web.Contracts;
 using GruzD.Web.Data;
 using GruzD.Web.Hubs;
@@ -144,6 +145,7 @@ namespace GruzD.Web.Backend
         public static void StartUpService(IServiceCollection services)
         {
             services.AddSignalR();
+            services.AddHostedService<EventProcessingHostedService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<ApplicationUser> userManager, ClaimsLoader claimsLoader, IApiVersionDescriptionProvider provider)
@@ -156,6 +158,8 @@ namespace GruzD.Web.Backend
                 var logicContext = serviceScope.ServiceProvider.GetRequiredService<LogicDataContext>();
                 logicContext.Database.EnsureCreated();
             }
+
+            EventProcessingHostedService.CanGo.Release();
 
             this.SeedAthentication(userManager, claimsLoader);
             app.UseForwardedHeaders();

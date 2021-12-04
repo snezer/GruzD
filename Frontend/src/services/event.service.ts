@@ -3,6 +3,7 @@ import { RestService } from './base.service';
 import { PagedFilter, PropertyFilter } from './pagedFilter';
 import { IEvent } from "@/models/IEvent";
 import { EventType } from "@/models/enum/EventType";
+import { zoneStateService } from "@/services/zoneState.service";
 
 class EventService extends RestService<IEvent> {
   constructor() {
@@ -31,6 +32,9 @@ class EventService extends RestService<IEvent> {
     }, 4000)
    return true
   };
+  async getEventListsZoneState(zoneId: number){
+    return await eventService.getById(`last?zoneId=${zoneId}&number=40`)
+  }
 }
 
 export const eventService = new EventService();
